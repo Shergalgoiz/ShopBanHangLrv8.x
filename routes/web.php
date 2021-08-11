@@ -13,6 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\Admin\MenuController;
+
+Route::GET('/', function () {
     return view('welcome');
 });
+
+Route::GET('admin/users/login', [LoginController::class, 'login'])->name('login');
+Route::POST('admin/users/login/store', [LoginController::class, 'store']);
+
+Route::middleware(['auth'])->group(function() {
+
+    #Admin
+    Route::prefix('admin')->group(function () {
+        Route::GET('admin', [MainController::class, 'mainidx'])->name('admin');
+        Route::GET('admin/main', [MainController::class, 'mainidx']);
+    });
+
+    #Menu
+    Route::prefix('menus')->group( function(){
+        Route::GET('add', [MenuController::class, 'create']);
+
+    });
+});
+
+
+

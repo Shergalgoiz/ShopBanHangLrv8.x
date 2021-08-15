@@ -24,20 +24,15 @@ Route::GET('/', function () {
 Route::GET('admin/users/login', [LoginController::class, 'login'])->name('login');
 Route::POST('admin/users/login/store', [LoginController::class, 'store']);
 
-Route::middleware(['auth'])->group(function() {
-
+Route::middleware(['auth'])->group(function () {
     #Admin
     Route::prefix('admin')->group(function () {
-        Route::GET('admin', [MainController::class, 'mainidx'])->name('admin');
-        Route::GET('admin/main', [MainController::class, 'mainidx']);
-    });
-
-    #Menu
-    Route::prefix('menus')->group( function(){
-        Route::GET('add', [MenuController::class, 'create']);
-
+        Route::GET('/', [MainController::class, 'mainidx'])->name('admin');
+        Route::GET('main', [MainController::class, 'mainidx']);
+        #Menu
+        Route::prefix('menus')->group(function () {
+            Route::GET('add', [MenuController::class, 'create'])->name('menus');
+            Route::POST('add', [MenuController::class, 'store']);
+        });
     });
 });
-
-
-

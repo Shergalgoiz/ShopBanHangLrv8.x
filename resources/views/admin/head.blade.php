@@ -10,5 +10,12 @@
 <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css')}}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 @yield('head')
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>

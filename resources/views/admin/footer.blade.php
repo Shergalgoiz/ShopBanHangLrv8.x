@@ -5,5 +5,6 @@
 <script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js')}}"></script>
+<script src="{{ asset('AdminLTE/dist/js/main.js')}}"></script>
 
 @yield('footer')

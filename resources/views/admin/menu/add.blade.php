@@ -1,7 +1,7 @@
 @extends('admin.home')
 
 @section('head')
-    <script src="{{ asset('ckeditor/ckeditor.js')}}"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     {{-- <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script> --}}
 @endsection
 
@@ -11,16 +11,16 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="menu">Tên Danh mục</label>
-                    <input name="menu" type="text" class="form-control" placeholder="Nhập tên Danh mục">
+                    <input name="name" type="text" class="form-control" placeholder="Nhập tên Danh mục">
                 </div>
 
                 <div class="form-group">
                     <label for="menu">Danh mục</label>
                     <select name="parent_id" class="form-control">
                         <option value="0">Danh mục Cha</option>
-                        <option value="1">iphone</option>
-                        <option value="2">Android</option>
-                        <option value="3">Windows Phone</option>
+                        @foreach ($menus as $menu)
+                            <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 

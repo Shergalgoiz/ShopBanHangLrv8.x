@@ -31,8 +31,11 @@ Route::middleware(['auth'])->group(function () {
         Route::GET('main', [MainController::class, 'mainidx']);
         #Menu
         Route::prefix('menus')->group(function () {
-            Route::GET('add', [MenuController::class, 'create'])->name('menus');
+            Route::GET('add', [MenuController::class, 'create']);
             Route::POST('add', [MenuController::class, 'store']);
+            Route::GET('list', [MenuController::class, 'listidx']);
+            Route::GET('edit{menu}', [MenuController::class, 'show']);
+            Route::DELETE('destroy', [MenuController::class, 'destroyidx']);
         });
     });
 });
